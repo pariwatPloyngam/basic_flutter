@@ -7,8 +7,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange.shade100,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade300,
+        leading: IconButton(icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        
+      },  
+        ),
+        backgroundColor: Colors.orange.shade300,
         elevation: 0,
         title: Text("Food Conner"),
       ),
