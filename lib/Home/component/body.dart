@@ -1,16 +1,14 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:myflutter/Home/home_screen.dart';
 
 import '../../product.dart';
 import 'categories.dart';
 import '../component/details.dart';
+import '../../Home/component/item_card.dart';
 
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var product;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -26,49 +24,27 @@ class Body extends StatelessWidget {
         ),
         Categories(),
         Expanded(
-             child:ListView.builder(
-              itemCount: menu.length,
-              itemBuilder: (BuildContext context, int index) {
-                Product food = menu[index];
-                return ListTile(
-                  leading: Image.asset(food.img),
-                  title: Text(
-                    food.name,
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  subtitle: Text("ราคา "+food.price+" บาท",
-                      style: TextStyle(fontSize: 15)),
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Detail()));
-                    
-                  },
-                );
-                
-              }),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: GridView.builder(
+                itemCount: products.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.75,
+                ),
+                itemBuilder: (context, index) => ItemCard(
+                      product: products[index],
+                      press: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Details(
+                              product: products[index],
+                            ),
+                          )),
+                    )),
+          ),
         ),
       ],
     );
   }
 }
-
-
-// class Details extends StatefulWidget {
-//   const Details({Key? key}) : super(key: key);
-
-//   @override
-//   State<Details> createState() => _DetailsState();
-// }
-
-// class _DetailsState extends State<Details> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.orange.shade100,
-//       appBar: AppBar(
-//         title: const Text("Test"),
-//         backgroundColor: Colors.orange.shade300,
-//       ),
-//     );
-    
-//   }
-// }
