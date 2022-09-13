@@ -13,9 +13,13 @@ class Body extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.fromLTRB(10, 13, 0, 0),
+          padding: const EdgeInsets.only(
+            left: 30.0,
+            top: 15.0,
+            bottom: 10.0
+            ),
           child: Text(
-            "เลือกเมนู",
+            "เลือกเมนูอาหาร",
             style: Theme.of(context)
                 .textTheme
                 .headline5
@@ -25,7 +29,7 @@ class Body extends StatelessWidget {
         Categories(),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.only(left: 30.0),
             child: GridView.builder(
                 itemCount: products.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -20,17 +20,33 @@ class ItemCard extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Container(
+              padding: EdgeInsets.zero,
+              margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
               width: 150,
-              child: Image.asset(product.image),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: SizedBox.fromSize(
+                  size: Size.fromRadius(30),
+                  child: Hero(
+                    tag: "${product.id}",
+                    child: Image.asset(
+                      product.image,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsets.all(0),
             child: Text(product.name,
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                style: TextStyle(
+                  fontSize: 15, 
+                  fontWeight: FontWeight.bold)),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsets.only(bottom: 15.0),
             child: Text("ราคา ${product.price} บาท",
                 style: TextStyle(fontSize: 13)),
           ),

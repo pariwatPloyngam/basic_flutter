@@ -13,7 +13,7 @@ class Details extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange.shade300,
+      backgroundColor: Colors.orange.shade100,
       appBar: buildAppBar(context),
       body: DetailBody(product: product,)
     );
